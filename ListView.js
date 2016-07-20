@@ -33,13 +33,12 @@ addRow=function(model){
 }
 
 this.update=function(){
-	var
-	now=Date.now(),
-	d=now-lastUpdate
+	if (!scrolls.length) return lastUpdate=Date.now()
 
+	var now=Date.now()
+
+	scrolls=scrolls.filter(scrollTo, now-lastUpdate)
 	lastUpdate=now
-	if (!scrolls.length) return
-	scrolls=scrolls.filter(scrollTo, d)
 }
 
 return{
@@ -67,14 +66,17 @@ return{
 		deps=this.deps,
 		list=deps.list
 
-        var li=document.createElement('li')
-        li.classList.add('empty-message')
-        li.innerHTML=deps.emptyMsg
-        this.el.appendChild(li)
-
+		if (deps.emptyMsg){
+			var li=document.createElement('li')
+			li.classList.add('empty-message')
+			li.innerHTML=deps.emptyMsg
+			this.el.appendChild(li)
+		}
 		this.loadDependencies(list,function(){
             list.each(addRow,self)
         })
+
+		this.postRender()
 	},
 	slots:{
 		scrollTo:function(from, sender, to, duration){
@@ -83,7 +85,7 @@ return{
 			scrolls.push([el, to, (to-el.scrollTop)/duration,Ceil(duration/10)])
 		}
 	},
-	events:{
+	postRender:function(){
 	},
     loadDependencies:function(list, cb){
         cb()
