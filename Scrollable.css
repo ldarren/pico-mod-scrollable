@@ -1,4 +1,4 @@
-.__ .scrollable{
+#__ .scrollable{
 	flex:1 1 auto;
 	flex-direction:column;
 	display:flex;
@@ -9,23 +9,23 @@
     width:100%;
 	padding:0 1rem;
 }
-.__ .scrollable li.empty-message {
+#__ .scrollable li.empty-message {
 	display: none;
 }
-.__ .scrollable li.empty-message:last-child {
+#__ .scrollable li.empty-message:last-child {
 	display: block;
 	margin: 1rem;
 	text-align: center;
 	font-size: 1.5rem;
 }
-.__ .scrollable.glass {
+#__ .scrollable.glass {
     background:rgba(0,0,0,0.5)
 }
-.__ .scrollable::-webkit-scrollbar {
+#__ .scrollable::-webkit-scrollbar {
     width: 5px;
     background-color: none;
 }
-.__ .scrollable::-webkit-scrollbar-thumb {
+#__ .scrollable::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: rgba(0,0,0,0.3);
 }
