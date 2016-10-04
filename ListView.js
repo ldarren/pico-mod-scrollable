@@ -44,6 +44,7 @@ this.update=function(){
 return{
     tagName:'ul',
 	className:'scrollable',
+	signals:['deselect'],
 	deps:{
 		emptyMsg:['file','There are no items at this time'],
 		list:'models',
@@ -66,7 +67,7 @@ return{
 		deps=this.deps,
 		list=deps.list
 
-		if (deps.emptyMsg){
+		if ((!list || !list.length) && deps.emptyMsg){
 			var li=document.createElement('li')
 			li.classList.add('empty-message')
 			li.innerHTML=deps.emptyMsg
@@ -83,6 +84,9 @@ return{
 			var el=this.el
 			scrolls=scrolls.filter(removeExisting,el)
 			scrolls.push([el, to, (to-el.scrollTop)/duration,Ceil(duration/10)])
+		},
+		deselectother:function(from,sender){
+			this.signals.deselect().send([sender,this.host])
 		}
 	},
 	postRender:function(){
