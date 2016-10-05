@@ -32,8 +32,8 @@ return{
 			this.el.classList.remove('selected')
 		}
 	},
-	checkSelection:function(model,params){
-		return model.id == params[0]
+	checkSelection:function(model,selected){
+		return model.id === selected
 	},
 	select:function(){
 		this.el.classList.add('selected')
