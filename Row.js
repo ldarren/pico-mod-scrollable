@@ -13,7 +13,7 @@ return{
     deps:{  
         data:'model',
         tpl:'file',
-		selected:'int'
+		selected:'param'
     },      
     create:function(deps,params){
 		var data=deps.data
@@ -33,7 +33,7 @@ return{
 		}
 	},
 	checkSelection:function(model,selected){
-		return model.id === selected
+		return model.id == selected
 	},
 	select:function(){
 		this.el.classList.add('selected')
