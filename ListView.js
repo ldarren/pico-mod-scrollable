@@ -84,11 +84,9 @@ return{
 			var el=this.el
 			scrolls=scrolls.filter(removeExisting,el)
 			scrolls.push([el, to, (to-el.scrollTop)/duration,Ceil(duration/10)])
-			return true
 		},
 		deselectother:function(from,sender){
 			this.signals.deselect().send([sender,this.host])
-			return true
 		}
 	},
 	postRender:function(){
