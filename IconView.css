@@ -1,0 +1,9 @@
+@import url('./Scrollable.css');
+#__ .scrollable.icons{
+	flex:1 1 auto;
+	flex-flow:row wrap;
+	justify-content:space-around;
+	align-items:flex-end;
+	align-content:flex-start;
+	display:flex;
+}
